@@ -1,9 +1,9 @@
 'use strict';
 
 const events = require('../events')
-// require('../caps')
-require('../driver')
-require('../vendor')
+require('../caps')
+// require('../driver')
+// require('../vendor')
 
 describe( 'Events', () => {
   let consoleSpy;
@@ -37,6 +37,8 @@ describe( 'Events', () => {
     expect(  consoleSpy ).toHaveBeenCalledWith()
 
 } );
+
+afterAll(() => setTimeout(() => process.exit(), 0))
 it( 'test in-transit event logs',  async() => {
         
     events.emit('in-transit', order)
@@ -63,3 +65,4 @@ it( 'test delivered event logs',  async() => {
     expect( consoleSpy ).toHaveBeenCalledWith('VENDOR: thank you for delivery Order#1' )
 } );
 } );
+
