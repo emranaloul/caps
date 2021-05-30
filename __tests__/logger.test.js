@@ -22,6 +22,9 @@ describe( 'Events', () => {
     afterEach( () => {
         consoleSpy.mockRestore();
     } );
+  
+  afterAll(() => setTimeout(() => process.exit(), 0))
+
     
     it( 'test pick-up event logs',  async () => {
         
