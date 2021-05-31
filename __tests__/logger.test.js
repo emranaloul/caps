@@ -1,9 +1,9 @@
 'use strict';
 
 const events = require('../events')
-// require('../caps')
-require('../driver')
-require('../vendor')
+require('../caps')
+// require('../driver')
+// require('../vendor')
 
 describe( 'Events', () => {
   let consoleSpy;
@@ -20,49 +20,57 @@ describe( 'Events', () => {
     } );
     
     afterEach( () => {
-        consoleSpy.mockRestore();
+      consoleSpy.mockRestore();
     } );
   
 //   afterAll(() => setTimeout(() => process.exit(), 0))
 
     
+    afterAll(() => setTimeout(() => process.exit(), 500))
     it( 'test pick-up event logs',  async () => {
         
     events.emit('pick-up', order)
+    // events.on('pick-up', order)
     await consoleSpy()
 
-    //   expect( consoleSpy ).toHaveBeenCalledWith( {
-    //     storeName: 'Store', 
-    //     orderId: 1, 
-    //     customerName: 'Emran', 
-    //     address: 'Amman'
-    //   } );
-    expect(  consoleSpy ).toHaveBeenCalledWith()
+      expect( consoleSpy ).toHaveBeenCalledWith( {
+        storeName: 'Store', 
+        orderId: 1, 
+        customerName: 'Emran', 
+        address: 'Amman'
+      } );
+    // expect(  consoleSpy ).toHaveBeenCalledWith()
 
 } );
+
 it( 'test in-transit event logs',  async() => {
         
     events.emit('in-transit', order)
     await consoleSpy()
-    //   expect( await consoleSpy ).toHaveBeenCalledWith( {
-    //     storeName: 'Store', 
-    //     orderId: 1, 
-    //     customerName: 'Emran', 
-    //     address: 'Amman'
-    //   }); 
-      expect( consoleSpy ).toHaveBeenCalledWith()
+      expect( consoleSpy ).toHaveBeenCalledWith( {
+        storeName: 'Store', 
+        orderId: 1, 
+        customerName: 'Emran', 
+        address: 'Amman'
+      }); 
+      // expect( consoleSpy ).toHaveBeenCalledWith()
 
 });
 it( 'test delivered event logs',  async() => {
         
     events.emit('delivered', order)
     await consoleSpy()
-    //   expect( consoleSpy ).toHaveBeenCalledWith( {
-    //     storeName: 'Store', 
-    //     orderId: 1, 
-    //     customerName: 'Emran', 
-    //     address: 'Amman'
-    //   } ); 
-    expect( consoleSpy ).toHaveBeenCalledWith('VENDOR: thank you for delivery Order#1' )
+      expect( consoleSpy ).toHaveBeenCalledWith( {
+        storeName: 'Store', 
+        orderId: 1, 
+        customerName: 'Emran', 
+        address: 'Amman'
+      } ); 
+      expect( consoleSpy).toHaveBeenCalled()
+    // expect( consoleSpy ).toHaveBeenCalledWith('VENDOR: thank you for delivery Order#1' )
 } );
 } );
+
+
+
+
