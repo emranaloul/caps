@@ -22,6 +22,9 @@ describe( 'Events', () => {
     afterEach( () => {
       consoleSpy.mockRestore();
     } );
+  
+//   afterAll(() => setTimeout(() => process.exit(), 0))
+
     
     afterAll(() => setTimeout(() => process.exit(), 500))
     it( 'test pick-up event logs',  async () => {
@@ -67,4 +70,7 @@ it( 'test delivered event logs',  async() => {
     // expect( consoleSpy ).toHaveBeenCalledWith('VENDOR: thank you for delivery Order#1' )
 } );
 } );
+
+
+
 
