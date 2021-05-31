@@ -5,16 +5,14 @@ let faker = require('faker');
 require('./driver')
 
 
-let O = 1;
 const myInterval = setInterval( () =>{
         let newOrder = {
             storeName: faker.company.companyName(), 
-            orderId: O, 
+            orderId: faker.datatype.uuid(), 
             customerName: faker.name.findName(), 
             address: faker.address.cityName()
         }
         events.emit('pick-up', newOrder)
-        O++
 } , 5000);
 
 // setTimeout(()=> {
@@ -26,3 +24,4 @@ events.on('delivered',(payload) =>{
 })
     
 
+module.exports = {myInterval}
