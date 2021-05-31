@@ -1,9 +1,7 @@
 'use strict';
-const { myInterval} = require('../vendor')
+const { myInterval } = require('../vendor')
 const events = require('../events')
 require('../caps')
-// require('../driver')
-// require('../vendor')
 
   describe( 'Events', () => {
     let consoleSpy;
@@ -14,8 +12,7 @@ require('../caps')
       customerName: 'Emran', 
       address: 'Amman'
     }
-    
-    beforeEach( () => {
+        beforeEach( () => {
         consoleSpy = jest.spyOn( console, 'log' );
       } );
       
@@ -57,3 +54,4 @@ require('../caps')
   clearInterval(myInterval)
   } );
 } );
+

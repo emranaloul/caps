@@ -15,10 +15,6 @@ const myInterval = setInterval( () =>{
         events.emit('pick-up', newOrder)
 } , 5000);
 
-// setTimeout(()=> {
-//     clearInterval(myInterval);
-// }, 5000);
-
 events.on('delivered',(payload) =>{
  console.log(`VENDOR: thank you for delivery Order#${payload.orderId}`)
 })
